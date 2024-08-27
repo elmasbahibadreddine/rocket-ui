@@ -1,4 +1,4 @@
-const domaine = 'https://rocket-production-cf9c.up.railway.app/'
+const domaine = 'https://rocket-production-cf9c.up.railway.app'
 
 export default {
     // Auth
