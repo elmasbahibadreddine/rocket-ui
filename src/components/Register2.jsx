@@ -8,16 +8,18 @@ import URLs from "../urls";
 
 const Register2 = ({picture,username,password,invalidPicture,setInvalidPicture,invalidFullname,setInvalidFullname,setPicture,fullname,setFullName,setIsLoading,showRegister1,hideRegister2,showRegisterFaild,showRegisterSucceed}) => {
     const [fullnameFocus,setFullnameFocus] = useState(false)
+    const [imagePreview, setImagePreview] = useState(null);
+
     const imgInputRef = useRef(null)
 
     const handleImageChange = ev =>{
         setInvalidPicture(false)
         const file = ev.target.files[0];
         if(file && file.type.startsWith('image/')){
+           setPicture(file)
+
             const reader = new FileReader()
-            reader.onload = ()=>{
-                setPicture(reader.result)
-            }
+            reader.onloadend = () => setImagePreview(reader.result)
             reader.readAsDataURL(file)
         }
         else{
@@ -31,12 +33,17 @@ const Register2 = ({picture,username,password,invalidPicture,setInvalidPicture,i
 
         if(useFullnameValidityChecker(fullname) && !invalidPicture){
             setIsLoading(true)
+
+            const formData = new FormData()
+
+            formData.append('picture', picture)
+            formData.append('username', username)
+            formData.append('password', password)
+            formData.append('fullname', fullname)
+
             fetch(URLs.register,{
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({picture,fullname,username,password}),
+                body: formData,
             }).then(res=>{
                 if(res.status == 201){
                     hideRegister2()
@@ -69,7 +76,7 @@ const Register2 = ({picture,username,password,invalidPicture,setInvalidPicture,i
             </div>
             <div className="w-full flex flex-col justify-center items-center">
                 <p className="w-full text-slate-400 mb-1 mt-4 ">Profile picture</p>
-                <button onClick={() => imgInputRef.current.click()} style={{backgroundImage:`url("${picture}")`}}  className={`group bg-origin-border bg-contain bg-no-repeat bg-center  w-24 h-24 bg-sate-100 rounded-lg flex justify-center items-center border-2 border-slate-200 border-dashed hover:border-violet-700 transition-all ease-in-out duration-100 ${invalidPicture? 'border-red-400':''} `}>
+                <button onClick={() => imgInputRef.current.click()} style={{backgroundImage:`url("${imagePreview}")`}}  className={`group bg-origin-border bg-contain bg-no-repeat bg-center  w-24 h-24 bg-sate-100 rounded-lg flex justify-center items-center border-2 border-slate-200 border-dashed hover:border-violet-700 transition-all ease-in-out duration-100 ${invalidPicture? 'border-red-400':''} `}>
                     <FaCamera className={`text-slate-300 text-xl group-hover:text-violet-700 transition-all ease-in-out duration-100 ${invalidPicture? 'text-red-600':''}`}/>
                 </button>
                 <input ref={imgInputRef} type="file" accept="image/*" onChange={handleImageChange} className=" hidden" />

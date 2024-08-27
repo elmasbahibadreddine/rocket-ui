@@ -23,7 +23,7 @@ const Register = ({hideNavbar,hideNavBtn})=> {
     const [fullname,setFullName] = useState('')
     const [invalidFullname, setInvalidFullname] = useState(false)
     const [invalidPicture, setInvalidPicture] = useState(false)
-    const [picture,setPicture] = useState('')
+    const [picture,setPicture] = useState()
 
     const [showRegister1, setShowRegister1] = useState(true)
     const [showRegister2, setShowRegister2] = useState(false)
