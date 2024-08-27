@@ -74,7 +74,7 @@ const Login = ({hideNavbar,hideNavBtn})=> {
                     <div className={`transition-all ease-in-out duration-100 h-full w-14 flex justify-center items-center ${usernameFocus ? 'text-violet-700' : 'text-slate-400'}`}>
                         <FaUserAlt/>
                     </div>
-                    <input onBlur={() => setUsernameFocus(false)} onFocus={() => setUsernameFocus(true)}  className='w-full h-full bg-transparent focus:outline-none pr-5 text-slate-800 placeholder:text-slate-400' value={username} onChange={ev => setUsername(ev.target.value)} type='text' placeholder='Username'/>
+                    <input onBlur={() => setUsernameFocus(false)} onFocus={() => setUsernameFocus(true)}  className='w-full h-full bg-transparent focus:outline-none pr-5 text-slate-800 placeholder:text-slate-400' value={username} onChange={ev => setUsername(ev.target.value.toLowerCase())} type='text' placeholder='Username'/>
                 </div>
                 <div className={`mt-2 transition-all ease-in-out duration-100 relative flex h-12 w-full overflow-hidden rounded-lg border-2 ${passwordFocus ? 'border-violet-700' : 'border-slate-200'} bg-slate-50`}>
                     <div className={`transition-all ease-in-out duration-100 h-full w-14 flex justify-center items-center ${passwordFocus ? 'text-violet-700' : 'text-slate-400'}`}>

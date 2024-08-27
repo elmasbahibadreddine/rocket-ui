@@ -58,7 +58,7 @@ const Register1 = ({setIsLoading, username, password, confirmPassword, setUserna
                     <div className={`transition-all ease-in-out duration-100 h-full w-14 flex justify-center items-center ${usernameFocus ? 'text-violet-700' : 'text-slate-400'} ${invalidUsername? 'text-red-400' : ''}`}>
                         <FaUserAlt/>
                     </div>
-                    <input onBlur={() => setUsernameFocus(false)} onFocus={() => {setUsernameFocus(true); setInvalidUsername(false)}}  className='w-full h-full bg-transparent focus:outline-none pr-5 text-slate-800 placeholder:text-slate-400' value={username} onChange={ev => setUsername(ev.target.value)} type='text' placeholder='Username'/>
+                    <input onBlur={() => setUsernameFocus(false)} onFocus={() => {setUsernameFocus(true); setInvalidUsername(false)}}  className='w-full h-full bg-transparent focus:outline-none pr-5 text-slate-800 placeholder:text-slate-400' value={username} onChange={ev => setUsername(ev.target.value.toLowerCase())} type='text' placeholder='Username'/>
                 </div>
                 {invalidUsername? <div className=" text-red-400 flex  items-center">
                         <IoIosWarning/>

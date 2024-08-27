@@ -1,6 +1,5 @@
 const API_HOST = import.meta.env.VITE_API_HOST
 
-console.log(API_HOST)
 export default {
     // Auth
     login: `${API_HOST}/auth/login`,
