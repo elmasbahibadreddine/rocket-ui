@@ -1,14 +1,13 @@
-import dotenv from 'dotenv'
-dotenv.config()
+const API_HOST = import.meta.env.VITE_API_HOST
 
-
+console.log(API_HOST)
 export default {
     // Auth
-    login: `${process.env.API_HOST }/auth/login`,
-    logout: `${process.env.API_HOST }/auth/logout`,
-    register: `${process.env.API_HOST }/auth/register`,
-    checkUsernameValidity: `${process.env.API_HOST }/auth/checkUsernameValidity`,
+    login: `${API_HOST}/auth/login`,
+    logout: `${API_HOST}/auth/logout`,
+    register: `${API_HOST}/auth/register`,
+    checkUsernameValidity: `${API_HOST}/auth/checkUsernameValidity`,
     // User Session
-    fullname: `${process.env.API_HOST }/session/fullname`,
-    username: `${process.env.API_HOST }/session/username`,
+    fullname: `${API_HOST}/session/fullname`,
+    username: `${API_HOST}/session/username`,
 }
