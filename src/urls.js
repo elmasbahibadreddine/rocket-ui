@@ -1,12 +1,14 @@
-const domaine = 'https://rocket-production-cf9c.up.railway.app'
+import dotenv from 'dotenv'
+dotenv.config()
+
 
 export default {
     // Auth
-    login: `${domaine}/auth/login`,
-    logout: `${domaine}/auth/logout`,
-    register: `${domaine}/auth/register`,
-    checkUsernameValidity: `${domaine}/auth/checkUsernameValidity`,
+    login: `${process.env.API_HOST }/auth/login`,
+    logout: `${process.env.API_HOST }/auth/logout`,
+    register: `${process.env.API_HOST }/auth/register`,
+    checkUsernameValidity: `${process.env.API_HOST }/auth/checkUsernameValidity`,
     // User Session
-    fullname: `${domaine}/session/fullname`,
-    username: `${domaine}/session/username`,
+    fullname: `${process.env.API_HOST }/session/fullname`,
+    username: `${process.env.API_HOST }/session/username`,
 }
