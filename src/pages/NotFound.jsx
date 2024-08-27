@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from "react"
 
-const NotFound = ({hideNavbar,hideNavBtn}) => {
+const NotFound = ({hideAccountBtn,hideNavbar,hideNavBtn}) => {
     useEffect(()=>{
         hideNavbar()
         hideNavBtn()
+        hideAccountBtn()
     },[])
     return(
         <div className='w-1/3 min-w-96 p-4 flex flex-col justify-center items-center'>

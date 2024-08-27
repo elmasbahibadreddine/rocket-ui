@@ -4,12 +4,13 @@ import URLs from "../urls";
 import Loader from "../components/Loader";
 
 
-const Logout = ({handleLogout,hideNavbar,hideNavBtn}) =>{
+const Logout = ({hideAccountBtn,handleLogout,hideNavbar,hideNavBtn}) =>{
     const navigate = useNavigate();
 
     useEffect(()=>{
         hideNavbar()
         hideNavBtn()
+        hideAccountBtn()
     },[])
 
     useEffect(()=>{

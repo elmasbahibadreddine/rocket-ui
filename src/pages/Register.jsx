@@ -8,7 +8,7 @@ import RegisterSucceed from '../components/RegisterSucceed'
 import RegisterFaild from '../components/RegisterFaild'
 
 
-const Register = ({hideNavbar,hideNavBtn})=> {
+const Register = ({hideAccountBtn,hideNavbar,hideNavBtn})=> {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(true)
@@ -33,6 +33,7 @@ const Register = ({hideNavbar,hideNavBtn})=> {
     useEffect(()=>{
         hideNavbar()
         hideNavBtn()
+        hideAccountBtn()
     },[])
 
     useEffect(()=>{

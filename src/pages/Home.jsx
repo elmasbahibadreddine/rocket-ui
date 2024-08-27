@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import Loader from "../components/Loader"
 import URLs from '../urls'
 
-const Home = ({fullname = '', setFullname, hideNavbar,showNavBtn})=> {
+const Home = ({showAccountBtn,fullname = '', setFullname, hideNavbar,showNavBtn})=> {
     const navigate = useNavigate();
     useEffect(()=>{
         hideNavbar()
         showNavBtn()
+        showAccountBtn()
     },[])
     useEffect(()=>{
         if(fullname.length <= 0){

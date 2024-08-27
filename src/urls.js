@@ -9,4 +9,5 @@ export default {
     // User Session
     fullname: `${API_HOST}/session/fullname`,
     username: `${API_HOST}/session/username`,
+    profilePicture: `${API_HOST}/session/profilePicture`,
 }

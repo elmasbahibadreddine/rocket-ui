@@ -8,7 +8,7 @@ import { IoIosWarning } from "react-icons/io";
 
 
 
-const Login = ({hideNavbar,hideNavBtn})=> {
+const Login = ({hideAccountBtn,hideNavbar,hideNavBtn})=> {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true)
     const [username,setUsername] = useState('')
@@ -49,6 +49,7 @@ const Login = ({hideNavbar,hideNavBtn})=> {
     useEffect(()=>{
         hideNavbar()
         hideNavBtn()
+        hideAccountBtn()
     },[])
 
     useEffect(()=>{

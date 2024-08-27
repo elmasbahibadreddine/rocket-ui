@@ -16,6 +16,7 @@ const App = () => {
   const [profilePicture,setProfilePicture] = useState('')
   const [showNav,setSHowNav] = useState(false)
   const [showNavBtn,setSHowBtn] = useState(true)
+  const [showAccountBtn,setShowAccountBtn] = useState(true)
 
   const handleLogout = () =>{
     setFullname('')
@@ -25,15 +26,15 @@ const App = () => {
   
   return (
     <div className='w-screen min-h-screen text-slate-900 bg-slate-50 font-josefin flex flex-col justify-between items-center'>
-      <Header showNavBtn={showNavBtn} showNavBar={()=> setSHowNav(true)} />
+      <Header showAccountBtn={showAccountBtn} fullname={fullname} showNavBtn={showNavBtn} showNavBar={()=> setSHowNav(true)} />
       {showNav ? <Navbar hideNavbar={()=> setSHowNav(false)}/> : ''}
       <Routes>
-        <Route path="/" element={<Home showNavBtn = {()=>{setSHowBtn(true)}} hideNavbar={()=> setSHowNav(false)} fullname={fullname} setFullname={setFullname}/>} />
-        <Route path="/login" element={<Login hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
-        <Route path="/register" element={<Register hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
-        <Route path="/logout" element={<Logout hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)} handleLogout={handleLogout}/>} />
-        <Route path="/error" element={<InternalError hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
-        <Route path="*" element={<NotFound hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
+        <Route path="/" element={<Home showAccountBtn={()=>setShowAccountBtn(true)} showNavBtn = {()=>{setSHowBtn(true)}} hideNavbar={()=> setSHowNav(false)} fullname={fullname} setFullname={setFullname}/>} />
+        <Route path="/login" element={<Login hideAccountBtn={()=>setShowAccountBtn(false)} hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
+        <Route path="/register" element={<Register hideAccountBtn={()=>setShowAccountBtn(false)} hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
+        <Route path="/logout" element={<Logout hideAccountBtn={()=>setShowAccountBtn(false)} hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)} handleLogout={handleLogout}/>} />
+        <Route path="/error" element={<InternalError hideAccountBtn={()=>setShowAccountBtn(false)} hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
+        <Route path="*" element={<NotFound hideAccountBtn={()=>setShowAccountBtn(false)} hideNavBtn = {()=>{setSHowBtn(false)}} hideNavbar={()=> setSHowNav(false)}/>} />
       </Routes>
       <Footer/>
     </div>
